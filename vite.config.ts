@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/shamini-portfolio/',
   build: {
     target: 'es2022',
     rollupOptions: {
