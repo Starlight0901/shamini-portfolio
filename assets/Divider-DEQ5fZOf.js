@@ -1,0 +1,1 @@
+import{T as e}from"./react-D-sCWQUy.js";import{d as t}from"./Section-DN5Rtcl6.js";var n=e();function r({className:e,decorative:r=!0,...i}){return(0,n.jsx)(`div`,{role:r?`none`:`separator`,"aria-hidden":r?!0:void 0,className:t(`hairline`,e),...i})}export{r as t};
