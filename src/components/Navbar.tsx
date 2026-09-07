@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import { site } from '../data/site'
+import { site, visibleNavLinks } from '../data/site'
 import { cn } from '../lib/cn'
 import { prefetchPage } from '../routes'
 import { Container } from './ui/Container'
@@ -16,16 +16,7 @@ export type NavbarProps = {
   links?: readonly NavbarLink[]
 }
 
-const defaultLinks: readonly NavbarLink[] = [
-  { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
-  { label: 'Projects', to: '/projects' },
-  { label: 'Digital Products', to: '/digital-products' },
-  { label: 'About', to: '/about' },
-  { label: 'Contact', to: '/contact' },
-]
-
-export function Navbar({ brand = site.shortName, links = defaultLinks }: NavbarProps) {
+export function Navbar({ brand = site.name, links = visibleNavLinks }: NavbarProps) {
   const [open, setOpen] = useState(false)
   const [compact, setCompact] = useState(false)
   const location = useLocation()

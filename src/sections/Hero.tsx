@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../components/Button'
-import { TechBadge } from '../components/TechBadge'
+import { Portrait } from '../components/Portrait'
 import { Container } from '../components/ui/Container'
-import { Heading, Label, Text } from '../components/ui/Typography'
+import { Heading, Text } from '../components/ui/Typography'
 import { hero } from '../data/hero'
 import { cn } from '../lib/cn'
 import './Hero.css'
@@ -48,36 +48,45 @@ export function Hero() {
       <HeroAtmosphere />
 
       <Container className="relative z-10 flex min-h-0 flex-col justify-center py-16 sm:py-20 md:min-h-[calc(100svh-4.25rem)] md:py-24 lg:py-28">
-        <div className="hero-copy max-w-3xl">
-          <Label tone="accent">{hero.kicker}</Label>
+        <div className="grid min-w-0 items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:gap-16 xl:gap-20">
+          <div className="hero-copy min-w-0">
+            <p className="font-display text-[1.05rem] font-semibold tracking-tight text-foreground">
+              {hero.identity}
+            </p>
 
-          <Heading as="h1" size="display" id="hero-heading" className="mt-5">
-            {hero.heading}
-          </Heading>
+            <Heading as="h1" size="title" id="hero-heading" className="mt-4 max-w-xl">
+              {hero.heading}
+            </Heading>
 
-          <Text className="mt-6 max-w-xl">{hero.summary}</Text>
+            <Text className="mt-5 max-w-lg">{hero.summary}</Text>
 
-          <div className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
-            <Button to={hero.primaryCta.to} size="lg" className="w-full sm:w-auto">
-              {hero.primaryCta.label}
-            </Button>
-            <Button
-              to={hero.secondaryCta.to}
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {hero.secondaryCta.label}
-            </Button>
+            <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center xl:flex-nowrap">
+              <Button to={hero.primaryCta.to} size="lg" className="w-full sm:w-auto">
+                {hero.primaryCta.label}
+              </Button>
+              <Button
+                to={hero.secondaryCta.to}
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                {hero.secondaryCta.label}
+              </Button>
+              <Button
+                to={hero.tertiaryCta.to}
+                variant="ghost"
+                size="lg"
+                className="w-full border border-border hover:border-accent-border sm:w-auto"
+              >
+                {hero.tertiaryCta.label}
+              </Button>
+            </div>
           </div>
 
-          <ul className="mt-12 flex flex-wrap gap-2">
-            {hero.indicators.map((item) => (
-              <li key={item.label}>
-                <TechBadge tone={item.tone}>{item.label}</TechBadge>
-              </li>
-            ))}
-          </ul>
+          <Portrait
+            priority
+            className="hero-portrait mx-auto w-full max-w-[16.5rem] sm:max-w-[18rem] lg:ml-auto lg:mr-0 lg:max-w-[19.5rem]"
+          />
         </div>
       </Container>
     </section>

@@ -8,6 +8,7 @@ export type PageHeroProps = {
   kickerTone?: 'default' | 'accent' | 'tech' | 'personal'
   title: string
   description?: ReactNode
+  media?: ReactNode
 }
 
 export function PageHero({
@@ -15,10 +16,17 @@ export function PageHero({
   kickerTone,
   title,
   description,
+  media,
 }: PageHeroProps) {
   return (
     <Section className="pb-10 md:pb-12" aria-labelledby="page-heading">
-      <Container>
+      <Container
+        className={
+          media
+            ? 'grid min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(14rem,0.7fr)] lg:gap-16'
+            : undefined
+        }
+      >
         <SectionHeading
           as="h1"
           id="page-heading"
@@ -28,6 +36,7 @@ export function PageHero({
           title={title}
           description={description}
         />
+        {media}
       </Container>
     </Section>
   )

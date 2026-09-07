@@ -1,4 +1,3 @@
-import { AboutPreview } from '../sections/AboutPreview'
 import { FeaturedProjects } from '../sections/FeaturedProjects'
 import { Hero } from '../sections/Hero'
 import { HomeCta } from '../sections/HomeCta'
@@ -10,7 +9,6 @@ export function Home() {
       <Hero />
       <WhatIDo />
       <FeaturedProjects />
-      <AboutPreview />
       <HomeCta />
     </>
   )

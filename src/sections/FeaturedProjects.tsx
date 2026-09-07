@@ -3,10 +3,10 @@ import { ProjectCard } from '../components/ProjectCard'
 import { SectionHeading } from '../components/SectionHeading'
 import { Container } from '../components/ui/Container'
 import { Section } from '../components/ui/Section'
-import { projects, projectsIntro } from '../data/projects'
+import { visibleProjects, projectsIntro } from '../data/projects'
 
 export function FeaturedProjects() {
-  const featured = projects.filter((project) => project.featured)
+  const featured = visibleProjects.filter((project) => project.featured)
 
   return (
     <Section aria-labelledby="featured-projects-heading">

@@ -1,3 +1,5 @@
+import { whenEducation, withoutEducationContent } from '../config/features'
+
 export type ProjectStatus =
   | 'completed'
   | 'in-development'
@@ -23,6 +25,7 @@ export type Project = {
   role: string
   demoUrl?: string
   githubUrl?: string
+  educationContent?: boolean
 }
 
 export const projectStatusLabel: Record<ProjectStatus, string> = {
@@ -47,7 +50,7 @@ export const isBuiltStatus = (status: ProjectStatus) =>
 
 export const projectsIntro = {
   kicker: 'Featured projects',
-  title: 'Work in motion, shown honestly.',
+  title: 'Work in motion',
   description:
     'These projects are in development or planned. I will share case studies and links when there is something ready to view.',
 }
@@ -111,6 +114,7 @@ export const projects: Project[] = [
   },
   {
     id: 'tutor-progress',
+    educationContent: true,
     title: 'Tutor Management & Student Progress System',
     summary:
       'An education system in development for managing tutors, learners, and progress without unnecessary complexity.',
@@ -155,6 +159,7 @@ export const projects: Project[] = [
   },
   {
     id: 'education-website',
+    educationContent: true,
     title: 'Tutor / Education Website',
     summary:
       'A planned website for tutoring and education services, made to explain the offering and make enquiry straightforward.',
@@ -198,3 +203,16 @@ export const projects: Project[] = [
     role: 'Research and development (concept)',
   },
 ]
+
+export const visibleProjects = withoutEducationContent(projects)
+
+export const digitalProductsPage = {
+  title: whenEducation(
+    'Small tools and learning resources.',
+    'Practical templates and tools.',
+  ),
+  description: whenEducation(
+    'Reusable templates and learning resources. Items appear here when they are ready to share.',
+    'Reusable templates and tools for everyday work. Items appear here when they are ready to share.',
+  ),
+}

@@ -58,24 +58,28 @@
 }
 
 .hero-glow-cyan {
-  top: 28%;
-  right: -6%;
-  width: min(18rem, 55vw);
-  height: min(18rem, 55vw);
-  background: radial-gradient(circle, rgb(103 232 249 / 0.1), transparent 70%);
+  top: 22%;
+  right: -4%;
+  width: min(20rem, 58vw);
+  height: min(20rem, 58vw);
+  background: radial-gradient(circle, rgb(103 232 249 / 0.12), transparent 70%);
 }
 
 .hero-constellation {
   position: absolute;
   inset: 0;
-  opacity: 0.7;
+  opacity: 0.65;
   mask-image: radial-gradient(
-    ellipse 55% 70% at 28% 52%,
-    transparent 0%,
-    transparent 42%,
-    black 78%
+    ellipse 48% 62% at 78% 46%,
+    black 0%,
+    black 28%,
+    transparent 72%
   );
   animation: hero-drift 72s ease-in-out infinite;
+}
+
+.hero-portrait {
+  animation: hero-fade 0.9s ease-out 0.12s both;
 }
 
 .hero-twinkle {
@@ -99,7 +103,8 @@
   .hero-atmosphere,
   .hero-constellation,
   .hero-twinkle,
-  .hero-copy {
+  .hero-copy,
+  .hero-portrait {
     animation: none;
     opacity: 1;
     transform: none;

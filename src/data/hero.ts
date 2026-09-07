@@ -1,8 +1,10 @@
+import { site } from './site'
+
 export const hero = {
-  kicker: 'Practical digital solutions',
-  heading: 'I build practical digital solutions for real-world problems.',
+  identity: site.name,
+  heading: 'I build software that solves real problems.',
   summary:
-    'I design and develop software, systems, and learning tools that are clear, useful, and built to last — for people doing real work, not for spectacle.',
+    'From websites and business systems to automation, data, and AI — I focus on building practical solutions that people can actually use.',
   primaryCta: {
     label: 'View My Work',
     to: '/projects',
@@ -11,10 +13,14 @@ export const hero = {
     label: "Let's Work Together",
     to: '/contact',
   },
+  tertiaryCta: {
+    label: 'More about me',
+    to: '/about',
+  },
   indicators: [
     { label: 'Web applications', tone: 'tech' },
     { label: 'Technical systems', tone: 'tech' },
-    { label: 'Teaching', tone: 'personal' },
+    { label: 'Teaching', tone: 'personal', educationContent: true },
     { label: 'Digital products', tone: 'accent' },
   ],
 } as const

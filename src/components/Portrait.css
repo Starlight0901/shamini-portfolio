@@ -1,0 +1,94 @@
+.portrait {
+  position: relative;
+  width: 100%;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: 12% 10% 8%;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 48% 38%,
+    rgb(167 139 250 / 0.22),
+    rgb(103 232 249 / 0.08) 46%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.portrait-shell {
+  position: relative;
+  padding: 1px;
+  border-radius: 1.65rem;
+  background: linear-gradient(
+    155deg,
+    rgb(167 139 250 / 0.55),
+    rgb(103 232 249 / 0.22) 46%,
+    rgb(167 139 250 / 0.14)
+  );
+  box-shadow:
+    0 0 0 1px rgb(243 244 246 / 0.04),
+    0 22px 48px -28px rgb(0 0 0 / 0.72);
+}
+
+.portrait-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(1.65rem - 1px);
+  background: var(--background);
+}
+
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.portrait-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(11 15 20 / 0.08),
+    transparent 18%,
+    transparent 78%,
+    rgb(11 15 20 / 0.28)
+  );
+  pointer-events: none;
+}
+
+.portrait-spark {
+  position: absolute;
+  z-index: 1;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  box-shadow: 0 0 10px currentColor;
+  pointer-events: none;
+}
+
+.portrait-spark-tl {
+  top: 0.85rem;
+  left: 0.35rem;
+  color: var(--accent);
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.portrait-spark-br {
+  right: 0.55rem;
+  bottom: 1.15rem;
+  color: var(--tech);
+  background: var(--tech);
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-glow,
+  .portrait-spark {
+    box-shadow: none;
+  }
+}

@@ -1,3 +1,5 @@
+import { whenEducation, withoutEducationContent } from '../config/features'
+
 export type ServiceAccent = 'accent' | 'tech' | 'personal'
 
 export type ServiceIcon =
@@ -44,6 +46,7 @@ export type ServiceCategory = {
   accent: ServiceAccent
   ctaLabel: string
   items: ServiceItem[]
+  educationContent?: boolean
 }
 
 export type Service = Pick<
@@ -52,10 +55,12 @@ export type Service = Pick<
 >
 
 export const servicesIntro = {
-  kicker: 'What I do',
-  title: 'Practical capabilities for real work.',
-  description:
-    'Software, data, research support, teaching, and small digital products — explained in plain language.',
+  title: 'What I do',
+  subtitle: 'Practical solutions, designed and built for real needs.',
+  description: whenEducation(
+    'I work across software, automation, data, AI, technical research, and teaching to turn ideas and problems into useful digital solutions.',
+    'I work across software, automation, data, AI, and technical research to turn ideas and problems into useful digital solutions.',
+  ),
 }
 
 export const servicesPage = {
@@ -70,7 +75,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'software',
     title: 'Software & Systems',
     summary:
-      'Websites, management systems, custom web applications and dashboards.',
+      'Websites, business applications, management systems and custom dashboards.',
     explanation:
       'I design and build websites and internal tools that are straightforward to use. The aim is software that supports the work you already do — not a system you have to fight.',
     idealFor:
@@ -113,7 +118,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'automation',
     title: 'Automation & Data',
     summary:
-      'Excel, Google Sheets, Apps Script, reporting and data visualisation.',
+      'Excel, Google Sheets, Apps Script, reporting and data visualization.',
     explanation:
       'If a lot of your work lives in spreadsheets, I can help make that work cleaner, faster, and easier to trust — including repeating tasks handled with Google Apps Script.',
     idealFor:
@@ -156,7 +161,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'ai',
     title: 'AI & Technology',
     summary:
-      'Applied AI, computer vision, machine learning and data science.',
+      'Machine learning, computer vision, AI solutions and data science.',
     explanation:
       'I have a BSc (Hons) in Artificial Intelligence & Data Science and professional experience in AI/ML and software development. I help with applied problems — and I will say so when a fashionable tool is not the right fit.',
     idealFor:
@@ -192,13 +197,15 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'research',
     title: 'Academic & Research',
     summary:
-      'Research support, data analysis, technical documentation and related help.',
+      'Research support, data analysis, technical documentation, reports and paper writing/editing.',
     explanation:
-      'Support for the technical side of study and research: organising the work, analysing data, and writing methods and results clearly. I do not write assessed work on someone else’s behalf.',
-    idealFor:
+      'Support for the technical side of study and research: organising the work, analysing data, and writing methods, reports, and papers clearly. I do not write assessed work on someone else’s behalf.',
+    idealFor: whenEducation(
       'Students and researchers who need help with data, documentation, or structuring a technical piece of work.',
+      'Researchers and technical writers who need help with data, documentation, or structuring a piece of work.',
+    ),
     icon: 'research',
-    accent: 'personal',
+    accent: 'accent',
     ctaLabel: 'Ask about research support',
     items: [
       {
@@ -222,10 +229,18 @@ export const serviceCategories: ServiceCategory[] = [
           'Clear write-ups of methods, results, and how a system works.',
         icon: 'docs',
       },
+      {
+        id: 'papers',
+        title: 'Reports and papers',
+        summary:
+          'Writing and editing for technical reports and papers. I do not write assessed work on someone else’s behalf.',
+        icon: 'docs',
+      },
     ],
   },
   {
     id: 'education',
+    educationContent: true,
     title: 'Education & Tutoring',
     summary:
       'Patient help with software, data, and AI topics, plus learning materials.',
@@ -262,9 +277,9 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id: 'products',
-    title: 'Digital Products & Templates',
+    title: 'Digital Products',
     summary:
-      'Business tools, trackers, templates and productivity products.',
+      'Practical templates and tools designed to help individuals and small businesses manage their work.',
     explanation:
       'Small, reusable tools and templates for everyday work. These are useful when you need a starting point, not a full custom system.',
     idealFor:
@@ -284,7 +299,7 @@ export const serviceCategories: ServiceCategory[] = [
         id: 'trackers',
         title: 'Trackers',
         summary:
-          'Simple ways to keep progress, tasks, or students in view.',
+          'Simple ways to keep progress, tasks, or records in view.',
         icon: 'tracker',
       },
       {
@@ -298,7 +313,10 @@ export const serviceCategories: ServiceCategory[] = [
   },
 ]
 
-export const services: Service[] = serviceCategories.map(
+export const visibleServiceCategories =
+  withoutEducationContent(serviceCategories)
+
+export const services: Service[] = visibleServiceCategories.map(
   ({ id, title, summary, icon, accent }) => ({
     id,
     title,

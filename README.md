@@ -1,6 +1,8 @@
-# Shamini Tharaka Fernando — Portfolio
+# Shamini Fernando — Portfolio
 
-A personal portfolio for practical software, data, and teaching work. Content lives in data files, not in page layout, so copy and project status can be updated without rewriting the UI.
+A personal portfolio for practical software, data, and systems work. Content lives in data files, not in page layout, so copy and project status can be updated without rewriting the UI.
+
+Education, teaching, and tutoring content is kept in the data files and can be shown or hidden from `src/config/features.ts`.
 
 The site is a static front end. There is no backend or contact form — email is the contact path.
 
@@ -32,10 +34,10 @@ The app is usually at `http://localhost:5173/` (or the next free port Vite print
 
 | Path | Page |
 | --- | --- |
-| `/` | Home — hero, capabilities, featured projects, about preview |
+| `/` | Home — hero, capabilities, featured projects, contact |
 | `/services` | Service categories and items |
 | `/projects` | Case studies grouped by status |
-| `/digital-products` | Tools and learning resources |
+| `/digital-products` | Tools and templates |
 | `/about` | Short story and skill groups |
 | `/contact` | Email |
 
@@ -46,11 +48,12 @@ Change copy in `src/data/`. Pages read from these files.
 | File | What it controls |
 | --- | --- |
 | `src/data/site.ts` | Name, tagline, email, live URL, social links |
+| `src/config/features.ts` | Feature flags (`education`) |
 | `src/data/seo.ts` | Page titles and meta descriptions |
 | `src/data/hero.ts` | Home hero |
 | `src/data/services.ts` | Capabilities and the services page |
 | `src/data/projects.ts` | Projects, products, and case studies |
-| `src/data/about.ts` | About preview on the home page |
+| `src/data/about.ts` | About page profile content |
 | `src/data/skills.ts` | Skill groups on `/about` |
 | `src/data/cta.ts` | Closing call to action |
 
@@ -75,7 +78,9 @@ Each project in `src/data/projects.ts` has a `status`:
 
 Use `kind: 'product'` for digital products. Set `featured: true` to show a card on the home page.
 
-Do not mark planned or concept work as completed. Demo links should only appear when there is something to open. Gold / “personal” colour is for education and teaching, not for software status.
+Do not mark planned or concept work as completed. Demo links should only appear when there is something to open.
+
+Education, teaching, and tutoring entries stay in the data files. Set `education: true` in `src/config/features.ts` to show them again.
 
 To add a screenshot later, put the file in `public/` and set `image` on the project, for example `image: '/projects/business-platform.png'`.
 
@@ -86,7 +91,7 @@ Tokens live in `src/index.css` (`:root` and `@theme`). Colours, type scale, spac
 - Display: Outfit
 - Body: Source Sans 3
 - Labels: IBM Plex Mono
-- Accent violet `#A78BFA`, cyan `#67E8F9` for technical work, gold `#F5D58A` for education and teaching
+- Accent violet `#A78BFA`, cyan `#67E8F9` for technical work, gold `#F5D58A` reserved for education and teaching when that feature is enabled
 
 `src/styles/tokens.ts` mirrors a small set of those values for SVG use. If you change a colour in CSS, update the matching entry there.
 
@@ -95,6 +100,7 @@ Tokens live in `src/index.css` (`:root` and `@theme`). Colours, type scale, spac
 ```
 src/
   data/           Content and SEO
+  config/         Feature flags
   pages/          Route screens
   sections/       Page blocks (hero, CTA, previews)
   components/     Navbar, footer, cards, UI primitives

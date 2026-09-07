@@ -1,7 +1,9 @@
+import { withoutEducationContent } from '../config/features'
+
 export const site = {
-  name: 'Shamini Tharaka Fernando',
-  shortName: 'Shamini',
-  tagline: 'Technology, teaching, and careful craft.',
+  name: 'Shamini Fernando',
+  shortName: 'Shamini Fernando',
+  tagline: 'Practical software, data, and careful craft.',
   email: 'hello@example.com',
   /** Replace with the live site origin, with no trailing slash. */
   url: 'https://www.your-domain.com',
@@ -9,14 +11,22 @@ export const site = {
   ogImage: '/og-image.png',
 }
 
-export const navLinks = [
+export type NavLink = {
+  label: string
+  to: string
+  educationContent?: boolean
+}
+
+export const navLinks: NavLink[] = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
   { label: 'Projects', to: '/projects' },
   { label: 'Digital Products', to: '/digital-products' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
-] as const
+]
+
+export const visibleNavLinks = withoutEducationContent(navLinks)
 
 export const socialLinks = [
   { label: 'Email', href: 'mailto:shamifdo2003@gmail.com' },

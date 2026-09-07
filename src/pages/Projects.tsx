@@ -8,13 +8,13 @@ import {
   projectStatusGroups,
   projectStatusLabel,
   projectStatusTone,
-  projects,
+  visibleProjects,
   projectsPage,
 } from '../data/projects'
 import { PageHero } from '../sections/PageHero'
 
 export function Projects() {
-  const items = projects.filter((project) => project.kind === 'project')
+  const items = visibleProjects.filter((project) => project.kind === 'project')
 
   return (
     <>

@@ -21,7 +21,7 @@ export function HomeCta() {
       <Container className="relative">
         <div className="max-w-2xl space-y-8">
           <Label tone="accent">{homeCta.kicker}</Label>
-          <Heading as="h2" size="display" id="home-cta-heading">
+          <Heading as="h2" size="title" id="home-cta-heading">
             {homeCta.heading}
           </Heading>
           <Text className="max-w-xl">{homeCta.summary}</Text>

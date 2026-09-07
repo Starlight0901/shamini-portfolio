@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { Briefcase, FolderGit2, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { navLinks, site, socialLinks } from '../data/site'
+import { visibleNavLinks, site, socialLinks } from '../data/site'
 import { prefetchPage } from '../routes'
 import { Container } from './ui/Container'
 
@@ -28,7 +28,7 @@ export const Footer = memo(function Footer() {
               className="h-1.5 w-1.5 rounded-full bg-accent"
             />
             <span className="font-display text-[0.95rem] font-semibold tracking-tight">
-              {site.shortName}
+              {site.name}
             </span>
           </Link>
           <p className="max-w-xs text-sm text-muted">{site.tagline}</p>
@@ -37,7 +37,7 @@ export const Footer = memo(function Footer() {
         <nav aria-label="Footer" className="space-y-4">
           <p className="kicker">Navigate</p>
           <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
@@ -93,12 +93,7 @@ export const Footer = memo(function Footer() {
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>
-        <a
-          href={`mailto:${site.email}`}
-          className="inline-flex min-h-11 max-w-full items-center break-all text-muted no-underline transition-colors duration-200 hover:text-foreground"
-        >
-          {site.email}
-        </a>
+        <p>Designed &amp; Developed by {site.name}</p>
       </Container>
     </footer>
   )
