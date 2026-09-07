@@ -1,0 +1,107 @@
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(3px, -2px, 0);
+  }
+}
+
+@keyframes hero-twinkle {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.hero-atmosphere {
+  contain: paint;
+  animation: hero-fade 0.9s ease-out both;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.hero-glow-violet {
+  top: -12%;
+  left: 18%;
+  width: min(26rem, 70vw);
+  height: min(26rem, 70vw);
+  background: radial-gradient(circle, rgb(167 139 250 / 0.16), transparent 70%);
+}
+
+.hero-glow-cyan {
+  top: 28%;
+  right: -6%;
+  width: min(18rem, 55vw);
+  height: min(18rem, 55vw);
+  background: radial-gradient(circle, rgb(103 232 249 / 0.1), transparent 70%);
+}
+
+.hero-constellation {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  mask-image: radial-gradient(
+    ellipse 55% 70% at 28% 52%,
+    transparent 0%,
+    transparent 42%,
+    black 78%
+  );
+  animation: hero-drift 72s ease-in-out infinite;
+}
+
+.hero-twinkle {
+  animation: hero-twinkle 18s ease-in-out infinite;
+}
+
+.hero-twinkle-delay {
+  animation-delay: -9s;
+}
+
+.hero-copy {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-atmosphere-paused .hero-constellation,
+.hero-atmosphere-paused .hero-twinkle {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmosphere,
+  .hero-constellation,
+  .hero-twinkle,
+  .hero-copy {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
